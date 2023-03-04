@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/userModel');
+const Doctor = require('../models/doctorModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const authMiddleware = require('../middlewares/authMiddleware')
@@ -105,6 +106,67 @@ router.post("/apply-doctor-account", authMiddleware, async (req, res) => {
     console.log(error);
     res.status(500).send({
       message: "Error applying doctor account",
+      success: false,
+      error,
+    });
+  }
+
+
+});
+
+router.post("/mark-all-notifications-as-seen", authMiddleware, async (req, res) => {
+  try {
+
+    const user = await User.findOne({ _id: req.body.userId });
+    const unseenNotifications = user.unseenNotifications;
+    const seenNotifications = user.seenNotifications;
+
+    seenNotifications.push(...unseenNotifications);
+    user.unseenNotifications = [];
+
+    user.seenNotifications = seenNotifications;
+
+    const updatedUser = await user.save();
+    updatedUser.password = undefined;
+
+    res.status(200).send({
+      success: true,
+      message: "All notifications marked seen",
+      data: updatedUser,
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error marking unseen notifications",
+      success: false,
+      error,
+    });
+  }
+
+
+});
+
+router.post("/delete-all-notifications", authMiddleware, async (req, res) => {
+  try {
+
+    const user = await User.findOne({ _id: req.body.userId });
+
+    user.seenNotifications = [];
+
+    const updatedUser = await user.save();
+    updatedUser.password = undefined;
+
+    res.status(200).send({
+      success: true,
+      message: "All notifications are deleted",
+      data: updatedUser,
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error deleting seen notifications",
       success: false,
       error,
     });

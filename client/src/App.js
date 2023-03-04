@@ -5,6 +5,10 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
 import { useSelector } from 'react-redux';
+import ProtectedRoute from './components/ProtectedRoute';
+import PublicRoute from './components/PublicRoute';
+import ApplyDoctor from './pages/ApplyDoctor';
+import Notifications from './pages/Notifications';
 
 function App() {
 
@@ -14,10 +18,10 @@ function App() {
     <BrowserRouter>
 
       {loading && (
-      <div className="spinner-parent">
-        <div class="spinner-border" role="status">
+        <div className="spinner-parent">
+          <div class="spinner-border" role="status">
+          </div>
         </div>
-      </div>
       )}
 
       <Toaster
@@ -26,9 +30,41 @@ function App() {
       />
       <Routes>
 
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/' element={<Home />} />
+        <Route path='/login' element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        }
+        />
+
+        <Route path='/register' element={
+
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+        }
+        />
+
+        <Route path='/' element={
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        }
+        />
+
+        <Route path='/apply-doctor' element={
+          <ProtectedRoute>
+            <ApplyDoctor />
+          </ProtectedRoute>
+        }
+        />
+
+        <Route path='/notifications' element={
+          <ProtectedRoute>
+            <Notifications />
+          </ProtectedRoute>
+        }
+        />
 
       </Routes>
     </BrowserRouter>

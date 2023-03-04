@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import axios from 'axios'
+import Layout from '../components/Layout'
 
 function Home() {
 
@@ -22,7 +23,11 @@ function Home() {
   
 
   return (
-    <div>Home</div>
+    <Layout>
+      <h1>
+        Homepage
+      </h1>
+    </Layout>
   )
 }
 

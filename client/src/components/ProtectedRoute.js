@@ -7,7 +7,7 @@ import { setUser } from "../redux/userSlice";
 import { showLoading, hideLoading } from "../redux/altersSlice";
 
 function ProtectedRoute(props) {
-  const { user } = useSelector((state) => state.user);
+  const { user} = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const getUser = async () => {
@@ -37,7 +37,7 @@ function ProtectedRoute(props) {
   };
 
   useEffect(() => {
-    if (!user) {
+    if (!user ) {
       getUser();
     }
   }, [user]);

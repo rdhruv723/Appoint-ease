@@ -12,7 +12,7 @@ input{
   height: 40px !important;
 }
 
-input:focus{
+input:focus, .ant-picker{
   box-shadow: none !important;
   outline: none !important;
   border: 1px solid gray !important;
@@ -25,6 +25,16 @@ label{
 
 .ant-form-item{
   margin: 10px 0 !important;
+}
+
+.ant-picker-input input{
+  border: none !important;
+}
+
+.ant-picker{
+  height: 40px !important;
+  border: 1px solid rgba(128, 128, 128, 0.521) !important;
+  border-radius : 2px;
 }
 
 /* Common styling */
@@ -47,8 +57,15 @@ label{
   color: white;
 }
 
+.page-title{
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.918);
+  font-weight: bold;
+}
+
 .card-title{
-  font-size: 1.5rem;
+  font-size: 22px;
+  color: rgba(0, 0, 0, 0.709);
   font-weight: bold;
 }
 
@@ -69,6 +86,7 @@ label{
   width: 100% !important;
   border-radius: 0 !important;
   font-size: 16px;
+  width: max-content !important;
 }
 
 .anchor{
@@ -80,6 +98,7 @@ label{
 .anchor:hover{
   text-decoration: underline !important; 
 }
+
 
  /* authentication pages */
 
@@ -105,4 +124,5 @@ label{
   margin-left: -40px;
   border-bottom-left-radius: 10px;
 }
+
 

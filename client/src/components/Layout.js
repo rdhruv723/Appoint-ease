@@ -42,12 +42,12 @@ function Layout({ children }) {
         },
         {
             name: "Users",
-            path: "/users",
+            path: "/admin/userslist",
             icon: "ri-user-line",
         },
         {
             name: "Doctors",
-            path: "/doctors",
+            path: "/admin/doctorslist",
             icon: "ri-user-star-line",
         },
         {
@@ -55,10 +55,28 @@ function Layout({ children }) {
             path: "/profile",
             icon: "ri-user-line",
         },
-
     ];
 
-    const menuToBeRendered = user?.isAdmin ? adminMenu : userMenu;
+    const doctorMenu = [
+        {
+            name: "Home",
+            path: "/",
+            icon: "ri-home-line",
+        },
+        {
+            name: "Appointments",
+            path: "/appointments",
+            icon: "ri-file-list-line",
+        },
+        {
+            name: "Profile",
+            path: `/doctor/profile/${user?._id}`,
+            icon: "ri-user-line",
+        },
+    ];
+
+    const menuToBeRendered = user?.isAdmin ? adminMenu : user?.isDoctor ? doctorMenu : userMenu;
+    const role = user?.isAdmin ? "Admin" : user?.isDoctor ? "Doctor" : "User";
 
     return (
         <div className="main p-2">
@@ -68,6 +86,7 @@ function Layout({ children }) {
 
                     <div className="sidebar-header">
                         <h1 className='logo'>AE</h1>
+                         <h1 className="role">{role}</h1>
                     </div>
 
                     <div className="menu">
@@ -108,7 +127,7 @@ function Layout({ children }) {
                         )}
 
                         <div className="d-flex align-items-center px-4">
-                            <Badge count={user?.unseenNotifications.length} onClick = {()=> navigate('/notifications')} >
+                            <Badge count={user?.unseenNotifications.length} onClick={() => navigate('/notifications')} >
                                 <i className="ri-notification-line header-action-icon px-3"></i>
                             </Badge>
                             <Link className='anchor mx-3' to='/profile' >{user?.name}</Link>

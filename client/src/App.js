@@ -9,6 +9,9 @@ import ProtectedRoute from './components/ProtectedRoute';
 import PublicRoute from './components/PublicRoute';
 import ApplyDoctor from './pages/ApplyDoctor';
 import Notifications from './pages/Notifications';
+import Userslist from './pages/Admin/Userslist';
+import Doctorslist from './pages/Admin/Doctorslist';
+import Profile from './pages/Doctor/Profile';
 
 function App() {
 
@@ -66,9 +69,37 @@ function App() {
         }
         />
 
+        <Route
+          path="/admin/userslist"
+          element={
+            <ProtectedRoute>
+              <Userslist />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/doctorslist"
+          element={
+            <ProtectedRoute>
+              <Doctorslist />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/doctor/profile/:userId"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+

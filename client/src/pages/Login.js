@@ -1,66 +1,49 @@
-import React from 'react'
-import { Button, Form, Input } from 'antd'
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import toast from 'react-hot-toast'
-import { useDispatch, useSelector } from 'react-redux';
-import { showLoading, hideLoading } from '../redux/altersSlice';
+import React, {useEffect,useState} from 'react'
+import axios from 'axios'
+import Layout from '../components/Layout'
+import { Col, Row } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { showLoading, hideLoading } from "../redux/altersSlice";
+import Doctor from '../components/Doctor';
 
-function Login() {
+function Home() {
 
+  const [doctors, setDoctors] = useState([]);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const onFinish = async (values) => {
+  const getData = async () => {
     try {
-
-      dispatch(showLoading());
-      const response = await axios.post("http://localhost:7789/api/user/login", values);
-      dispatch(hideLoading());
+      dispatch(showLoading())
+      const response = await axios.get("http://localhost:7789/api/user/get-all-approved-doctors", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      dispatch(hideLoading())
       if (response.data.success) {
-        toast.success(response.data.message);
-        localStorage.setItem('token', response.data.data)
-        navigate('/');
-      } else {
-        toast.error(response.data.message);
+        setDoctors(response.data.data);
       }
     } catch (error) {
-      dispatch(hideLoading());
-      toast.error("Something went wrong");
+      dispatch(hideLoading())
     }
-  }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+  
 
   return (
-    <div className='authentication' >
-      <div className='authentication-form card p-3'>
-
-        <h1 className='card-title'>Welcome Back</h1>
-
-        <Form layout='vertical' onFinish={onFinish} >
-
-          <Form.Item label='Email' name='email'>
-            <Input placeholder='Email' />
-          </Form.Item>
-
-          <Form.Item label='Password' name='password'>
-            <Input placeholder='Password' type='password' />
-          </Form.Item>
-
-          <div className='d-flex justify-content-between align-items-center' >
-            <Button className='primary-button my-2' htmlType='submit'>Login</Button>
-
-            <Link to='/register' className='anchor' >CLICK HERE TO REGISTER</Link>
-          </div>
-
-
-
-        </Form>
-
-      </div>
-    </div>
-
-
+    <Layout>
+      <Row gutter={20} >
+        {doctors.map((doctor)=> (
+          <Col span={8} xs={24} sm={24} lg={8} >
+            <Doctor doctor={doctor} />
+          </Col>
+        ))}
+      </Row>
+    </Layout>
   )
 }
 
-export default Login
+export default Home

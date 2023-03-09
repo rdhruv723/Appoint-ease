@@ -74,8 +74,23 @@ label{
 }
 
 .card{
-  box-shadow: 0 0 2px gray;
+  box-shadow: 0 0 2px rgb(201, 199, 199);
   border-radius: 0 !important;
+}
+
+.card-text{
+  cursor: pointer;
+}
+
+p{
+  color: rgba(0, 0, 0, 0.7) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }
 
 .primary-button{
@@ -89,9 +104,14 @@ label{
   width: max-content !important;
 }
 
+.full-width-button{
+  width: 100% !important;
+}
+
 .anchor{
   font-size: 14px !important;
   color: rgba(0, 0, 0, 0.802) !important;
+  cursor: pointer;
   text-decoration: underline;
 }
 
@@ -124,5 +144,4 @@ label{
   margin-left: -40px;
   border-bottom-left-radius: 10px;
 }
-
 

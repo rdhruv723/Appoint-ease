@@ -49,4 +49,4 @@ router.post("/update-doctor-profile", authMiddleware, async (req, res) => {
   }
 });
 
-module.exports = router
+module.exports = router;

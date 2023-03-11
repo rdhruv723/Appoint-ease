@@ -227,18 +227,19 @@ router.post("/book-appointment", authMiddleware, async (req, res) => {
 });
 
 router.post("/check-booking-availability", authMiddleware, async (req, res) => {
+  
   try {
-    const date = moment(req.body.date, "DD-MM-YYYY").toISOString();
-    const fromTime = moment(req.body.time, "HH:mm")
-      .subtract(1, "hours")
-      .toISOString();
-    const toTime = moment(req.body.time, "HH:mm").add(1, "hours").toISOString();
+    const date = req.body.date;
+    const fromTime = req.body.time;
+    const toTime = req.body.time;
+    toTime[1] = this.toString(fromTime[1]-'0' + 1);
     const doctorId = req.body.doctorId;
     const appointments = await Appointment.find({
       doctorId,
       date,
       time: { $gte: fromTime, $lte: toTime },
-    });
+    }); 
+
     if (appointments.length > 0) {
       return res.status(200).send({
         message: "Appointments not available",
@@ -250,10 +251,29 @@ router.post("/check-booking-availability", authMiddleware, async (req, res) => {
         success: true,
       });
     }
+
   } catch (error) {
     console.log(error);
     res.status(500).send({
       message: "Error booking appointment",
+      success: false,
+      error,
+    });
+  }
+});
+
+router.get("/get-appointments-by-user-id", authMiddleware, async (req, res) => {
+  try {
+    const appointments = await Appointment.find({ userId: req.body.userId });
+    res.status(200).send({
+      message: "Appointments fetched successfully",
+      success: true,
+      data: appointments,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error fetching appointments",
       success: false,
       error,
     });

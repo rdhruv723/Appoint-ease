@@ -5,6 +5,7 @@ import { showLoading, hideLoading } from "../../redux/altersSlice";
 import axios from "axios";
 import { Table } from "antd";
 import {toast} from 'react-hot-toast'
+import moment from "moment";
 
 function Doctorlists() {
 
@@ -68,6 +69,7 @@ function Doctorlists() {
     {
       title: "Created At",
       dataIndex: "createdAt",
+      render: (record , text) => moment(record.createdAt).format("DD-MM-YYYY"),
     },
     {
       title: "Status",
@@ -95,4 +97,4 @@ function Doctorlists() {
   )
 }
 
-export default Doctorlists
+export default Doctorlists;

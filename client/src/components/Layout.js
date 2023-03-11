@@ -27,11 +27,6 @@ function Layout({ children }) {
             path: "/apply-doctor",
             icon: "ri-hospital-line",
         },
-        {
-            name: "Profile",
-            path: "/profile",
-            icon: "ri-user-line",
-        },
     ];
 
     const adminMenu = [
@@ -50,11 +45,6 @@ function Layout({ children }) {
             path: "/admin/doctorslist",
             icon: "ri-user-star-line",
         },
-        {
-            name: "Profile",
-            path: "/profile",
-            icon: "ri-user-line",
-        },
     ];
 
     const doctorMenu = [
@@ -65,7 +55,7 @@ function Layout({ children }) {
         },
         {
             name: "Appointments",
-            path: "/appointments",
+            path: "/doctor/appointments",
             icon: "ri-file-list-line",
         },
         {

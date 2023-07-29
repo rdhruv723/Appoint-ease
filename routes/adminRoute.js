@@ -16,7 +16,7 @@ router.get("/get-all-doctors", authMiddleware, async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      message: "Error applying doctor account",
+      message: "Error fetching doctors",
       success: false,
       error,
     });
@@ -34,7 +34,7 @@ router.get("/get-all-users", authMiddleware, async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      message: "Error applying doctor account",
+      message: "Error fetching users",
       success: false,
       error,
     });

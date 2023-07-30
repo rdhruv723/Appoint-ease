@@ -15,7 +15,7 @@ function Doctorlists() {
   const getDoctorsData = async () => {
     try {
       dispatch(showLoading());
-      const resposne = await axios.get("http://localhost:7789/api/admin/get-all-doctors", {
+      const resposne = await axios.get("https://appoint-ease.onrender.com/api/admin/get-all-doctors", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -33,7 +33,7 @@ function Doctorlists() {
     try {
       dispatch(showLoading());
       const resposne = await axios.post(
-        "http://localhost:7789/api/admin/change-doctor-account-status",
+        "https://appoint-ease.onrender.com/api/admin/change-doctor-account-status",
         { doctorId: record._id, userId: record.userId, status: status },
         {
           headers: {

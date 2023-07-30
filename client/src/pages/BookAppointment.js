@@ -23,7 +23,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "http://localhost:7789/api/doctor/get-doctor-info-by-id",
+        "https://appoint-ease.onrender.com/api/doctor/get-doctor-info-by-id",
         {
           doctorId: params.doctorId,
         },
@@ -47,7 +47,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "http://localhost:7789/api/user/check-booking-availability",
+        "https://appoint-ease.onrender.com/api/user/check-booking-availability",
         {
           doctorId: params.doctorId,
           date: date,
@@ -76,7 +76,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "http://localhost:7789/api/user/book-appointment",
+        "https://appoint-ease.onrender.com/api/user/book-appointment",
         {
           doctorId: params.doctorId,
           userId: user._id,

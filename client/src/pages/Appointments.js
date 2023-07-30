@@ -13,7 +13,7 @@ function Appointments() {
   const getAppointmentsData = async () => {
     try {
       dispatch(showLoading());
-      const resposne = await axios.get("http://localhost:7789/api/user/get-appointments-by-user-id", {
+      const resposne = await axios.get("https://appoint-ease.onrender.com/api/user/get-appointments-by-user-id", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

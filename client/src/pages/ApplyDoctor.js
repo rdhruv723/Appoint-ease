@@ -17,7 +17,7 @@ function ApplyDoctor() {
     const onFinish = async (values) => {
         try {
             dispatch(showLoading());
-            const response = await axios.post("http://localhost:7789/api/user/apply-doctor-account",
+            const response = await axios.post("https://appoint-ease.onrender.com/api/user/apply-doctor-account",
                 {
                     ...values,
                     userId: user._id,

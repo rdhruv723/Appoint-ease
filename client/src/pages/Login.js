@@ -15,7 +15,7 @@ function Login() {
     try {
 
       dispatch(showLoading());
-      const response = await axios.post("http://localhost:7789/api/user/login", values);
+      const response = await axios.post("https://appoint-ease.onrender.com/api/user/login", values);
       dispatch(hideLoading());
       if (response.data.success) {
         toast.success(response.data.message);

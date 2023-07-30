@@ -17,7 +17,7 @@ function Notifications() {
     const markAllAsSeen = async ()=> {
         try {
             dispatch(showLoading());
-            const response = await axios.post("http://localhost:7789/api/user/mark-all-notifications-as-seen",{userId : user._id}, {
+            const response = await axios.post("https://appoint-ease.onrender.com/api/user/mark-all-notifications-as-seen",{userId : user._id}, {
                 headers : {
                     Authorization : `Bearer ${localStorage.getItem('token')}`
                 }

@@ -19,7 +19,7 @@ function Profile() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "http://localhost:7789/api/doctor/update-doctor-profile",
+        "https://appoint-ease.onrender.com/api/doctor/update-doctor-profile",
         {
           ...values,
           userId: user._id,
@@ -51,7 +51,7 @@ function Profile() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "http://localhost:7789/api/doctor/get-doctor-info-by-user-id",
+        "https://appoint-ease.onrender.com/api/doctor/get-doctor-info-by-user-id",
         {
           userId: params.userId,
         },

@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=PT+Sans&family=Roboto:wght@100&display=swap');
+
+*{
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+/* antd override */
+
+input{
+  border-radius: 2px !important;
+  border: 1px solid rgba(128, 128, 128, 0.509) !important;
+  height: 40px !important;
+}
+
+input:focus, .ant-picker{
+  box-shadow: none !important;
+  outline: none !important;
+  border: 1px solid gray !important;
+}
+
+label{
+  font-size: 16px !important;
+  color: black;
+}
+
+.ant-form-item{
+  margin: 10px 0 !important;
+}
+
+.ant-picker-input input{
+  border: none !important;
+}
+
+.ant-picker{
+  height: 40px !important;
+  border: 1px solid rgba(128, 128, 128, 0.521) !important;
+  border-radius : 2px;
+}
+
+/* Common styling */
+
+.spinner-parent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.598);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+}
+.spinner-border{
+  height: 5rem;
+  width: 5rem;
+  color: white;
+}
+
+.page-title{
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.918);
+  font-weight: bold;
+}
+
+.card-title{
+  font-size: 22px;
+  color: rgba(0, 0, 0, 0.709);
+  font-weight: bold;
+}
+
+.normal-text{
+  font-size: 1rem;
+}
+
+.card{
+  box-shadow: 0 0 2px rgb(201, 199, 199);
+  border-radius: 0 !important;
+}
+
+.card-text{
+  cursor: pointer;
+}
+
+p{
+  color: rgba(0, 0, 0, 0.7) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.primary-button{
+  background-color: #005555 !important;
+  border-color: #005555 !important;
+  color: white !important;
+  height: 40px !important;
+  width: 100% !important;
+  border-radius: 0 !important;
+  font-size: 16px;
+  width: max-content !important;
+}
+
+.full-width-button{
+  width: 100% !important;
+}
+
+.anchor{
+  font-size: 14px !important;
+  color: rgba(0, 0, 0, 0.802) !important;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.anchor:hover{
+  text-decoration: underline !important; 
+}
+
+
+ /* authentication pages */
+
+.authentication{
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: #005555;
+}
+
+.authentication-form{
+  width: 400px;
+}
+
+.authentication .card-title{
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: rgba(255, 68, 0, 0.951);
+  color: white !important;
+  max-width: max-content !important;
+  padding: 7px 15px;
+  margin-left: -40px;
+  border-bottom-left-radius: 10px;
+}
+
